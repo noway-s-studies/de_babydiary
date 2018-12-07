@@ -1,0 +1,147 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+@mixin prefix($property, $value){
+  @each $vendor in (-webkit-, -moz-, -ms-, -o-, ''){
+    #{$vendor}#{$property}: unquote($value);
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.child-box {
+  overflow:scroll;
+  height: 100%;
+}
+.profile-box {
+  position: relative;
+  //display: inline-block;
+  margin: 2em;
+  padding: 1em 0 0.5em;
+  border: 1px solid rgba(0,0,0,0.6);
+  border-radius: 5px;
+  background-color: rgba(60,60,60,0.3);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.2), 0 2px 1px rgba(255,255,255,0.3) inset;
+  color: #fff;
+  vertical-align: middle;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+  font-family: 'Raleway', sans-serif;;
+  .profile-header {
+    margin: 0;
+    padding: 1em 0;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    text-align: center;
+    .profile-img {
+      display: inline-block;
+      background: url('../../../assets/temporary/pictures/kids/aae459f8-cd72-4f22-a852-a2551116cc09.png') top center / cover no-repeat;
+      height: 120px;
+      width: 120px;
+      margin: 0 1em;
+      padding: 0.6em;
+      border-radius: 50%;
+      box-shadow: 0px 1px 1px rgba(255,255,255,0.2), 0 0 8px rgba(0,0,0,0.5) inset;
+    }
+    .profile-name {
+      margin: 0.75em 0 0;
+      padding: 0 0.5em;
+      font-size: 1.6em;
+    }
+  }
+  .profile-detail {
+    overflow: hidden;
+    padding: 0.8em;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.6);
+    font-size: 0.8em;
+    &:last-child {
+      box-shadow: 0px 1px 1px rgba(255,255,255,0.1);
+    }
+    span {
+      float: left;
+      padding: 0.6em 1em;
+    }
+    .profile-value {
+      float: right;
+      min-width: 100px;
+      margin-left: 1.5em;
+      border-radius: 20px;
+      background-color: rgba(0,0,0,0.3);
+      box-shadow: 0px 1px 1px rgba(255,255,255,0.2), 0 0 8px rgba(0,0,0,0.5) inset;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+  .profile-btn-contact {
+    position: absolute;
+    top: 1em;
+    left: 100%;
+    width: 1.7em;
+    height: 2em;
+    background-color: rgba(255, 104,0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    line-height: 2;
+    &:hover {
+      background-color: rgba(255, 104,0, 0.1);
+    }
+    fa {
+      position: relative;
+      top: 6px;
+    }
+  }
+
+}
+.big {
+  font-size: 1.3em;
+  .profile-detail {
+    font-size: 0.7em;
+  }
+}
+.small {
+  font-size: 0.8em;
+  .profile-detail {
+    font-size: 0.9em;
+  }
+}
+.title,
+.credits {
+  padding: 1em;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+}
+.title {
+  font-size: 2em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(71,59,109,0.1);
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.1), -1px -1px 1px rgba(255,255,255,0.1), -1px 1px 1px rgba(255,255,255,0.1), 1px -1px 1px rgba(255,255,255,0.1);
+  @include prefix(transition, 'text-shadow .8s, color .8s');
+  &:hover {
+    text-shadow: 1px 1px 10px rgba(255,255,255,0.1), -1px -1px 10px rgba(255,255,255,0.1), -1px 1px 10px rgba(255,255,255,0.1), 1px -1px 10px rgba(255,255,255,0.1);
+    color: rgba(255,255,255,1);
+  }
+}
+.credits {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  font-size: 0.7em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  a {
+    color: #3a7283;
+    text-decoration: none;
+    &:hover {
+      color: #ae9aa1;
+    }
+  }
+}

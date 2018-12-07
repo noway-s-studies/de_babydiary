@@ -1,0 +1,76 @@
+.container{
+  min-width: 500px;
+  position: absolute;
+  top: 50%;
+  margin-bottom: -50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.card{
+  min-width: 300px;
+  color: #fff;
+  background-color: rgba(36, 89, 133, 0.8);
+}
+
+.card a{
+  color: #eff0f7;
+}
+
+.card input{
+  background-color: rgba(44, 62, 76, 0.8);
+}
+
+.login-card-header{
+  letter-spacing: 3px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #eff0f7;
+  background: rgba(38, 70, 97, 0.8);
+}
+
+.form-control{
+  background: rgba(42, 47, 51, .4);
+  border-color: transparent;
+  color: #fff;
+}
+
+.login-card .form-control:focus{
+  color: #eff0f7;
+  background: rgba(42, 47, 51, .8);
+  border-color: #3384AA;
+  outline: none;
+  box-shadow:none;
+}
+
+.login-card .form-control::placeholder{
+  color: #d6d7de;
+  opacity: 1;
+}
+
+/* Facebook BTN */
+.loginBtn--facebook {
+  background-color: #4C69BA;
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  text-shadow: 0 -1px 0 #354C8C;
+}
+
+.loginBtn--facebook:hover,
+.loginBtn--facebook:focus {
+  background-color: #5B7BD5;
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+}
+
+/* Google BTN */
+.loginBtn--google {
+  background: #DD4B39;
+  background-image: linear-gradient(#DD4B39, #A7372B);
+  text-shadow: 0 -1px 0 #A7372B;
+}
+
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+  background: #E74B37;
+  background-image: linear-gradient(#E74B37, #CD4435);
+}

@@ -1,0 +1,75 @@
+<div class="col-sm-12 col-md-6 col-lg-4">
+  <div class="profile-box small">
+    <span class="profile-btn-contact"
+          title="edit">
+      <fa *ngIf="ronly; else cancel" [name]="'pencil'" [size]=1 (click)="edit()"></fa>
+      <ng-template #cancel>
+        <fa [name]="'times-circle-o'" [size]=1 (click)="notMod()"></fa>
+      </ng-template>
+    </span>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <figure class="profile-header">
+        <div class="profile-img"
+             [style.background-colour]="'#75ce66'"
+             [style.background-image]="'url(' + kid?.albums[0]?.link + ')'"
+             [style.background-repeat]="'no-repeat'"
+             [style.background-position]="'top center'"
+             [style.background-size]="'cover'">
+        </div>
+        <div  class="profile-name">
+          {{ kid.lastName }} {{ kid.firstName }}
+        </div>
+      </figure>
+      <p class="profile-detail">
+        <span class="profile-label">Születési idő:</span>
+        <input [readonly]="ronly"
+               [ngModel] ="kid.birthday | date:'yyyy-MM-dd'"
+               type="date"
+               class="profile-value"
+               formControlName="birthday"
+               min="1901-01-01"
+               max="2100-12-31"/>
+      </p>
+      <p class="profile-detail">
+        <span class="profile-label">Nem:</span>
+        <select id="inputGroupSelect01"
+                class="profile-value"
+                name="id"
+                formControlName="sex"
+                [(ngModel)]="kid.sex">
+          <option selected hidden disabled value="0"
+                  class="profile-value">Válassz egy gyermeket!</option>
+          <option *ngFor="let sex of keys(sexEnum)"
+                  [ngValue]="sex"
+                  [attr.selected]="sexEnum[sex] === kid.sex ? true : null"
+                  class="profile-value">{{sexEnum[sex]}}</option>
+        </select>
+      </p>
+      <p *ngIf="false" class="profile-detail">
+        <span class="profile-label">Magasság (mm):</span>
+        <input [readonly]="ronly"
+               class="profile-value"
+               formControlName="height"
+               value="{{ kid.height }}" />
+      </p>
+      <p *ngIf="false" class="profile-detail">
+        <span class="profile-label">Átmérő (mm):</span>
+        <input [readonly]="ronly"
+               class="profile-value"
+               formControlName="weight"
+               value="{{ kid.weight }}" />
+      </p>
+      <p class="profile-detail">
+        <span class="profile-label">Megfogant:</span>
+        <input [readonly]="ronly"
+               [ngModel] ="kid.conception | date:'yyyy-MM-dd'"
+               type="date"
+               class="profile-value"
+               formControlName="conception"
+               min="1901-01-01T00:00:00"
+               max="2100-12-31T00:00:00"/>
+      </p>
+      <button *ngIf="!ronly" type="submit" class="btn btn-primary btn-block" role="button">Módosít</button>
+    </form>
+  </div>
+</div>

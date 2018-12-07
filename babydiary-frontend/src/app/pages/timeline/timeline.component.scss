@@ -1,0 +1,57 @@
+.timeline-box {
+  overflow:scroll;
+  height: 100%;
+}
+.buttonDiv{
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+}
+.buttonDiv button {
+  display: block;
+  position: relative;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  font-size: small;
+  padding: 0px 20px 2px;
+}
+
+
+
+#cd-timeline {
+  position: relative;
+  padding: 3em 0;
+  margin-bottom: 2em;
+}
+#cd-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #d7e4ed;
+}
+@media only screen and (min-width: 1170px) {
+  #cd-timeline {
+
+  }
+  #cd-timeline::before {
+    left: 50%;
+    margin-left: -2px;
+  }
+}
+
+.cd-container {
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.cd-container::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+
+

@@ -1,0 +1,16 @@
+<ng-container *ngIf="kinds != null; else loading">
+  <div class="child-box">
+    <div class="container  mx-auto">
+      <div class="row justify-content-center">
+        <app-kidcard
+          class=""
+          *ngFor="let kc of kinds"
+          [kid]="kc">
+        </app-kidcard>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>

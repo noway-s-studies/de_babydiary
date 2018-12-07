@@ -1,0 +1,23 @@
+<ng-container *ngIf="onlineEvents != null; else loading">
+  <div class="buttonDiv">
+    <button *ngIf="!newEventButtomText; else edit"
+            type="button"
+            class="btn btn-primary mx-auto rounded-top-0"
+            (click)="bodyDivShow()">Új esemény</button>
+    <ng-template #edit>
+      <button type="button" class="btn btn-primary mx-auto" (click)="bodyDivShow()">{{ newEventButtomText }}</button>
+    </ng-template>
+  </div>
+  <div class="timeline-box">
+    <section id="cd-timeline" class="cd-container">
+      <app-eventcard
+        class="cd-timeline-block"
+        *ngFor="let ec of onlineEvents"
+        [esemeny]="ec">
+      </app-eventcard>
+    </section>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>

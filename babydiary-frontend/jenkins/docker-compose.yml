@@ -1,0 +1,11 @@
+version: '0.1'
+
+services:
+  angular-cli-docker-ootb:
+    image: babydiary-frontend
+    build: .
+    ports:
+    - 80:4200
+    volumes:
+      - /docker-babydiary-frontend-temp:/app
+    command: ['npm start']

@@ -1,0 +1,53 @@
+<div class="scrollEnable">
+  <div class="col-8 mx-auto my-2 mb-5">
+    <div class="card login-card mb-3">
+      <div class="card-header login-card-header text-uppercase">Új elem</div>
+      <form class="mb-0"
+            #eventForm="ngForm"
+            (ngSubmit)="onSubmit(eventForm.value)">
+        <div class="input-group mb-3">
+          <div class="card-body">
+            <div class="form-group">
+              <label >Megnevezés:</label>
+              <input type="text"
+                     id="newBasketItem"
+                     class="form-control"
+                     name="item"
+                     [(ngModel)]="newBasket.item"
+                     placeholder="megnevezés" />
+            </div>
+            <div class="form-group">
+              <label >Ár (forint):</label>
+              <input type="number"
+                     id="newBasketPrice"
+                     class="form-control"
+                     name="price"
+                     [(ngModel)]="newBasket.price"
+                     placeholder="ár"
+                     min="1" max="99999999999999"/>
+            </div>
+          </div>
+        </div>
+        <input class="btn btn-primary btn-lg btn-block"
+               type="submit"
+               value="Hozzáad"/>
+      </form>
+    </div>
+  </div>
+  <div class="col-8 mx-auto my-2 mb-5">
+    <div class="card login-card mb-3">
+      <div class="card-header login-card-header text-uppercase">Kívánságlista</div>
+      <div class="card-body">
+        <ul class="list-group">
+          <li style="display: flex"
+              *ngFor="let bs of baskets;
+                      let i = index"
+              [ngClass]="calculateStyles(bs.price)">
+            <div style="width: 40px">{{ i+1 }}.</div>
+            <div>{{ bs.item }}</div>
+            <div style="right: 15px; position: absolute;">{{ bs.price }} Ft.</div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

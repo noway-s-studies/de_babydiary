@@ -1,0 +1,71 @@
+<div class="bodyDiv">
+  <div class="col-6 col-sg-12 col-lg-6 mx-auto py-3">
+    <div class="card login-card">
+      <div class="card-body">
+        <div *ngFor="let alert of alerts">
+          <alert [type]="alert.type"
+                 [dismissOnTimeout]="alert.timeout"
+                 (onClosed)="onClosed(alert)">
+            {{ alert.msg }}</alert>
+        </div>
+        <form class="mb-0"
+              #eventForm="ngForm"
+              (ngSubmit)="onSubmit(eventForm.value)">
+          <div class="form-group mb-0">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Gyermek</label>
+              </div>
+              <select id="inputGroupSelect01"
+                      class="custom-select"
+                      name="id"
+                      [ngModel]="actualEvent.kinder">
+                <option selected hidden disabled value="0">Válassz egy gyermeket!</option>
+                <option *ngFor="let kinder of kids$ | async" [value]="kinder.id">
+                  {{ kinder.firstName }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text"
+                     id="newEventTitle"
+                     class="form-control"
+                     name="title"
+                     [ngModel]="actualEvent.title"
+                     placeholder="Cím">
+            </div>
+            <div class="form-group">
+              <textarea type="text"
+                        id="newEventAlles"
+                        class="form-control"
+                        name="bodyText"
+                        [ngModel]="actualEvent.bodyText"
+                        placeholder="Részletek">
+              </textarea>
+            </div>
+            <div class="form-group mb-0">
+              <input type="datetime-local"
+                     id="newEventDate"
+                     class="form-control"
+                     name="dateTime"
+                     [ngModel]="inputDateFormat(actualEvent)"
+                     placeholder="Részletek"
+                     min="1901-01-01T00:00:00"
+                     max="2100-12-31T00:00:00">
+            </div>
+            <div class="card-footer bg-transparent"></div>
+            <input *ngIf="idURL === '0'; else edit" class="btn btn-primary btn-lg btn-block"
+                   type="submit"
+                   value="Hozzáad"/>
+            <ng-template #edit>
+              <input class="btn btn-primary btn-lg btn-block"
+                     type="submit"
+                     value="Módosít"/>
+            </ng-template>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-timeline></app-timeline>

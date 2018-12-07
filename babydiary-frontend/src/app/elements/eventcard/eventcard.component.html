@@ -1,0 +1,43 @@
+<div class="cd-timeline-img cd-picture "
+     [style.background-color]="'#75ce66'"
+     [style.background-image]="'url(' + kinderPicture + ')'"
+     [style.background-repeat]="'no-repeat'"
+     [style.background-position]="'top center'"
+     [style.background-size]="'cover'"
+     [routerLink]="['/child' ]"></div>
+<div class="cd-timeline-content">
+  <fa [name]="'pencil'"
+      [size]="2"
+      [routerLink]="['/timeline/' + esemeny.id + '/edit' ]"
+      [hidden]="!esemeny.bodyText"></fa>
+  <h2>{{ smallTitleText(esemeny) }}</h2>
+  <p>{{ smallBodyText(esemeny) }}</p>
+  <button type="button"
+          class="btn btn-outline-info ml-auto"
+          [hidden]="!esemeny.bodyText"
+          (click)="showChildModal()">Bővebben</button>
+  <span [hidden]="!esemeny.dateTime" class="cd-date">
+    {{ esemeny.dateTime | amDateFormat: 'llll' }}
+  </span>
+  <div bsModal
+       #childModal="bs-modal"
+       class="modal fade"
+       role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="dialog-child-name" class="modal-title pull-left">{{ esemeny.title }}</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ esemeny.bodyText }}
+          <div class="mt-3 align-right">{{ esemeny.dateTime | amDateFormat: 'LLLL' }}</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
